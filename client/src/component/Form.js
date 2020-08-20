@@ -17,6 +17,10 @@ export default function Form(props){
         const {name, value} = evt.target
         inputChange(name, value)
     }
+    // const onCheckboxChange = evt => {
+    //     const { name, checked } = evt.target
+    //     checkboxChange(name, checked)
+    //   }
 
     return(
         <form className= 'form container' onSubmit={onSubmit}>
@@ -57,6 +61,14 @@ export default function Form(props){
                 type='email'
                 />
             </label>
+           < label>
+            <input 
+            name="terms" 
+            type="checkbox"
+            checked ={values.terms === 'true'}
+            onChange={!true}  />
+            Terms/ Conditions
+        </label>
             <label>Role
                 <select
                 onChange={onInputChange}

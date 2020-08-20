@@ -12,6 +12,7 @@ const initialFormValues={
   email:'',
   // dropdown
   role:'',
+  terms: false
 }
 const initialFormErrors ={
   firstname: '',
@@ -76,8 +77,7 @@ function App() {
     })
   }
   //maybe a checkbox//
-
-  //submit//
+ 
   const submit = () =>{
     const newClient ={
       first_name: formValues.firstname,
