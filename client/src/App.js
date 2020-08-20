@@ -12,7 +12,7 @@ const initialFormValues={
   email:'',
   // dropdown
   role:'',
-  terms: false
+  terms: false,
 }
 const initialFormErrors ={
   firstname: '',
@@ -77,13 +77,20 @@ function App() {
     })
   }
   //maybe a checkbox//
- 
+  const checkboxChange = (event) => {
+    const {name, isChecked} = event.target
+    setFormvalues({
+      ...formValues,
+      [name]: isChecked
+    })
+  }
   const submit = () =>{
     const newClient ={
       first_name: formValues.firstname,
       last_name: formValues.lastname,
       email: formValues.email,
       role: formValues.role,
+      terms: formValues.terms,
     }
     postNewClient(newClient)
   }
@@ -109,6 +116,7 @@ function App() {
       <Form
         values={formValues}
         inputChange={inputChange}
+        checkboxChange={checkboxChange}
         submit={submit}
         disabled={disabled}
         errors={formErrors}

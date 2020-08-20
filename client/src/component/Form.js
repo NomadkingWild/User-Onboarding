@@ -5,6 +5,7 @@ export default function Form(props){
         values,
         submit,
         inputChange,
+        checkboxChange,
         disabled,
         errors,
     }= props
@@ -13,6 +14,10 @@ export default function Form(props){
         evt.preventDefault()
         submit()
     }
+    const onCheckboxChange = evt => {
+        const { name, checked } = evt.target
+        checkboxChange(name, checked)
+      }
     const onInputChange = evt =>{
         const {name, value} = evt.target
         inputChange(name, value)
@@ -26,7 +31,7 @@ export default function Form(props){
         <form className= 'form container' onSubmit={onSubmit}>
             <div className='form submit'>
                 <h2>Add a Client</h2>
-                <button disabled={disabled}>submit</button>
+                <button className='submitBtn' disabled={disabled}>submit</button>
                 <div className='errors'>
                     <div>{errors.firstname}</div>
                     <div>{errors.lastname}</div>
@@ -66,7 +71,7 @@ export default function Form(props){
             name="terms" 
             type="checkbox"
             checked ={values.terms === 'true'}
-            onChange={!true}  />
+            onChange={(e)=>checkboxChange(e)}  />
             Terms/ Conditions
         </label>
             <label>Role
